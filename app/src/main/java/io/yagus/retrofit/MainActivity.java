@@ -17,6 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
                 .baseUrl("https://api.github.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        // Rxjava 적용 버전
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("https://api.github.com/")
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
 
         GitHubService service = retrofit.create(GitHubService.class);
 
