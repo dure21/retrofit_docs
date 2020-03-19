@@ -13,6 +13,7 @@ import com.google.gson.JsonArray;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,13 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Rxjava 적용 버전
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("https://api.github.com/")
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-
         GitHubService service = retrofit.create(GitHubService.class);
 
         Call<List<Repo>> repos = service.listRepos("octocat");
@@ -70,5 +64,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_SHORT).show();
             }
         });
+
+//        // Rxjava 적용 버전
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("https://api.github.com/")
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//
+//        GitHubService service = retrofit.create(GitHubService.class);
+//
+//        // .... 생략
+
     }
 }
